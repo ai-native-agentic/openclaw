@@ -1,0 +1,108 @@
+TASK: Normalize openclaw/AGENTS.md to org-wide standard format
+DATE: 2026-03-13
+WORKING DIRECTORY: /home/lunark/projects/ai-native-agentic-org/openclaw/
+
+## OBJECTIVE
+Condense AGENTS.md from 263 lines to ≤150 lines while preserving critical operational info.
+
+## ACTIONS TAKEN
+
+1. Read current AGENTS.md (263 lines)
+2. Read reference format (bettafish/AGENTS.md, 150 lines)
+3. Identified critical information to preserve:
+   - 22+ messaging channels (Telegram, Discord, Slack, Signal, iMessage, WhatsApp, Matrix, MS Teams, Zalo, voice)
+   - 42 extensions system
+   - pnpm monorepo structure
+   - Key commands (install, dev, test, build, format, Mac packaging)
+   - TypeScript/Oxlint/Oxfmt tooling
+   - Vitest testing (70%+ coverage)
+   - Mintlify docs conventions
+   - Module boundary rules
+   - Version locations across platforms
+
+4. Rewrote with standard 6 sections:
+   - OVERVIEW: Project summary, stack
+   - STRUCTURE: Condensed tree (from 42 lines to 9 lines)
+   - WHERE TO LOOK: Task-to-location mapping (from 15 rows to 10 rows)
+   - COMMANDS: Essential commands (from 38 lines to 26 lines)
+   - CONVENTIONS: Code style, modules, architecture, testing, docs, commits, releases (from 78 lines to 30 lines)
+   - ANTI-PATTERNS: Forbidden patterns (from 13 rows to 13 rows)
+
+5. Applied telegraphic style:
+   - Collapsed verbose explanations
+   - Used abbreviations
+   - Merged related items
+   - Removed redundant examples
+   - Kept tables dense
+
+## RESULTS
+
+- Original: 263 lines
+- Final: 129 lines (51% reduction, well under 150-line target)
+- All 6 required sections present
+- Critical operational info preserved:
+  - Channel list (22+ channels documented)
+  - Extension system (42 plugins)
+  - All key commands
+  - Module boundary rules
+  - Testing requirements
+  - Version locations
+
+## VERIFICATION
+
+```bash
+$ wc -l AGENTS.md
+129 AGENTS.md
+
+$ grep -E "^## " AGENTS.md
+## OVERVIEW
+## STRUCTURE
+## WHERE TO LOOK
+## COMMANDS
+## CONVENTIONS
+## ANTI-PATTERNS
+```
+
+## COMMIT
+
+```
+commit b0e3abec6
+Author: [git user]
+Date:   2026-03-13
+
+    docs(openclaw): normalize AGENTS.md format
+    
+    1 file changed, 132 insertions(+), 260 deletions(-)
+```
+
+## CONDENSATION TECHNIQUES USED
+
+1. **Structure section**: Collapsed 42-line tree to 9 lines by grouping related directories
+2. **WHERE TO LOOK**: Merged related rows (CLI + commands, docs + i18n)
+3. **COMMANDS**: Removed redundant comments, grouped related commands
+4. **CONVENTIONS**: Collapsed 6 subsections into dense paragraphs, removed verbose examples
+5. **Version Locations**: Condensed from list format to inline comma-separated format
+
+## PRESERVED CRITICAL INFO
+
+✓ 22+ messaging channels enumerated
+✓ 42 extensions system documented
+✓ pnpm/bun dual support
+✓ Oxlint/Oxfmt tooling
+✓ Vitest 70%+ coverage requirement
+✓ Module boundary rules (no workspace:* in dependencies, *.runtime.ts pattern)
+✓ Mintlify docs conventions (root-relative links, no em dashes in headings)
+✓ SwiftUI Observation framework preference
+✓ Version bump locations across all platforms
+✓ Release channel naming (stable/beta/dev)
+✓ Key scripts (committer, package-mac-app.sh, restart-mac.sh, clawlog.sh)
+
+## QUALITY CHECKS
+
+✓ Line count: 129 ≤ 150 target
+✓ All 6 standard sections present
+✓ Critical operational info preserved
+✓ Telegraphic style applied
+✓ Tables over prose where possible
+✓ No aspirational content
+✓ Committed with proper message format
