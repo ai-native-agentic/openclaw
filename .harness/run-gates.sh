@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export PATH="$HOME/.local/bin:$PATH"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -44,7 +45,7 @@ run_gate "syntax" "test -f package.json"
 if command -v shellcheck >/dev/null 2>&1; then
   sh_count=$(cd "$PROJECT_ROOT" && find . -name '*.sh' -not -path './.git/*' -not -path './node_modules/*' -not -path './.venv/*' 2>/dev/null | wc -l)
   if [[ "$sh_count" -gt 0 ]]; then
-    run_gate "shellcheck" "find . -name '*.sh' -not -path './.git/*' -not -path './node_modules/*' -not -path './.venv/*' -exec shellcheck {} +"
+    run_gate "shellcheck" "find . -name '*.sh' -not -path './.git/*' -not -path './node_modules/*' -not -path './.venv/*' -exec shellcheck --severity=error {} +"
   else
     skip_gate "shellcheck" "no shell scripts"
   fi

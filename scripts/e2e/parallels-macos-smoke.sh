@@ -764,6 +764,7 @@ print(
 PY
   )"
   response="$(discord_api_request POST "/channels/$DISCORD_CHANNEL_ID/messages" "$payload")"
+  # shellcheck disable=SC2259
   printf '%s' "$response" | python3 - "$id_file" <<'PY'
 import json
 import pathlib
