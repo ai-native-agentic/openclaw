@@ -55,10 +55,14 @@ fi
 # Gate C: structure
 run_gate "structure" "test -f README.md || test -f AGENTS.md || test -f package.json || test -f Cargo.toml || test -f pyproject.toml"
 
-# Gate D-F: disabled
-skip_gate "gate_d" "disabled"
-skip_gate "gate_e" "disabled"
-skip_gate "gate_f" "disabled"
+# Gate D: dist artifact exists (build output present)
+run_gate "dist-artifact" "test -f dist/index.js"
+
+# Gate E: code format (oxfmt)
+run_gate "format" "pnpm format:check"
+
+# Gate F: plugin-sdk exports in sync
+run_gate "plugin-sdk-exports" "pnpm plugin-sdk:check-exports"
 
 echo ""
 echo "=== Results ==="

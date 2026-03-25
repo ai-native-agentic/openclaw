@@ -8,8 +8,8 @@ gates:
   gate_c:
     enabled: true
   gate_d:
-    enabled: false
+    enabled: true
   gate_e:
-    enabled: false
+    enabled: true
   gate_f:
-    enabled: false
+    enabled: true
