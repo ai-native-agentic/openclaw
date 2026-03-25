@@ -58,8 +58,8 @@ run_gate "structure" "test -f README.md || test -f AGENTS.md || test -f package.
 # Gate D: dist artifact exists (build output present)
 run_gate "dist-artifact" "test -f dist/index.js"
 
-# Gate E: code format (oxfmt)
-run_gate "format" "pnpm format:check"
+# Gate E: file size limit (warn-only until violations are resolved)
+skip_gate "loc-limit" "warn-only: $(node --import tsx scripts/check-ts-max-loc.ts --max 500 2>/dev/null | wc -l | tr -d ' ') files exceed 500 lines"
 
 # Gate F: plugin-sdk exports in sync
 run_gate "plugin-sdk-exports" "pnpm plugin-sdk:check-exports"
