@@ -161,6 +161,7 @@ vi.mock("../wait-for-idle-before-flush.js", () => ({
 vi.mock("../runs.js", () => ({
   setActiveEmbeddedRun: () => {},
   clearActiveEmbeddedRun: () => {},
+  updateActiveEmbeddedRunSnapshot: () => {},
 }));
 
 vi.mock("./images.js", () => ({
